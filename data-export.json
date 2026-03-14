@@ -1,0 +1,426 @@
+{
+  "products": [
+    {
+      "name": "NVIDIA H100 80GB",
+      "slug": "nvidia-h100-80gb",
+      "category": "AI Training",
+      "description": "Industry-leading GPU for AI training and large language models. H100 delivers unprecedented performance with Transformer Engine and FP8 support.",
+      "specs": {
+        "cpu": "128 cores ARM Neoverse",
+        "gpu": "NVIDIA H100",
+        "ram": "512GB DDR5",
+        "vram": "80GB HBM3",
+        "network": "200Gbps InfiniBand",
+        "storage": "2TB NVMe Gen4"
+      },
+      "pricing": {
+        "hourly": 2.5,
+        "monthly": 1500
+      },
+      "priceHourly": 2.5,
+      "priceMonthly": 1500,
+      "stock": 20,
+      "featured": true,
+      "images": [
+        "/images/h100.jpg"
+      ]
+    },
+    {
+      "name": "NVIDIA A100 80GB",
+      "slug": "nvidia-a100-80gb",
+      "category": "AI Training",
+      "description": "Proven AI workhorse with Multi-Instance GPU (MIG) technology for optimal resource utilization.",
+      "specs": {
+        "cpu": "64 cores",
+        "gpu": "NVIDIA A100",
+        "ram": "256GB DDR4",
+        "vram": "80GB HBM2e",
+        "network": "100Gbps",
+        "storage": "1TB NVMe"
+      },
+      "pricing": {
+        "hourly": 2,
+        "monthly": 1200
+      },
+      "priceHourly": 2,
+      "priceMonthly": 1200,
+      "stock": 15,
+      "featured": true,
+      "images": [
+        "/images/a100.jpg"
+      ]
+    },
+    {
+      "name": "NVIDIA RTX 4090",
+      "slug": "nvidia-rtx-4090",
+      "category": "Inference",
+      "description": "Best-in-class consumer GPU for AI inference and development. Perfect for prototyping and small-scale deployments.",
+      "specs": {
+        "cpu": "32 cores",
+        "gpu": "NVIDIA RTX 4090",
+        "ram": "128GB DDR5",
+        "vram": "24GB GDDR6X",
+        "network": "25Gbps",
+        "storage": "1TB NVMe"
+      },
+      "pricing": {
+        "hourly": 0.8,
+        "monthly": 480
+      },
+      "priceHourly": 0.8,
+      "priceMonthly": 480,
+      "stock": 50,
+      "featured": true,
+      "images": [
+        "/images/4090.jpg"
+      ]
+    },
+    {
+      "name": "NVIDIA RTX 5090",
+      "slug": "nvidia-rtx-5090",
+      "category": "Training",
+      "description": "Next-gen GPU with Blackwell architecture. Exceptional performance for AI training and research.",
+      "specs": {
+        "cpu": "48 cores",
+        "gpu": "NVIDIA RTX 5090",
+        "ram": "192GB DDR5",
+        "vram": "32GB GDDR7",
+        "network": "50Gbps",
+        "storage": "2TB NVMe Gen5"
+      },
+      "pricing": {
+        "hourly": 1.2,
+        "monthly": 720
+      },
+      "priceHourly": 1.2,
+      "priceMonthly": 720,
+      "stock": 30,
+      "featured": false,
+      "images": [
+        "/images/5090.jpg"
+      ]
+    },
+    {
+      "name": "NVIDIA L40S",
+      "slug": "nvidia-l40s",
+      "category": "Visualization",
+      "description": "Powerful GPU designed for visual computing, rendering, and AI inference workloads.",
+      "specs": {
+        "cpu": "64 cores",
+        "gpu": "NVIDIA L40S",
+        "ram": "256GB DDR5",
+        "vram": "48GB GDDR6X",
+        "network": "100Gbps",
+        "storage": "2TB NVMe"
+      },
+      "pricing": {
+        "hourly": 1.5,
+        "monthly": 900
+      },
+      "priceHourly": 1.5,
+      "priceMonthly": 900,
+      "stock": 25,
+      "featured": false,
+      "images": [
+        "/images/l40s.jpg"
+      ]
+    },
+    {
+      "name": "NVIDIA H200",
+      "slug": "nvidia-h200",
+      "category": "AI Training",
+      "description": "Next-generation AI GPU with expanded memory for larger models and datasets.",
+      "specs": {
+        "cpu": "128 cores",
+        "gpu": "NVIDIA H200",
+        "ram": "512GB DDR5",
+        "vram": "141GB HBM3e",
+        "network": "200Gbps InfiniBand",
+        "storage": "2TB NVMe Gen5"
+      },
+      "pricing": {
+        "hourly": 3.5,
+        "monthly": 2100
+      },
+      "priceHourly": 3.5,
+      "priceMonthly": 2100,
+      "stock": 10,
+      "featured": true,
+      "images": [
+        "/images/h200.jpg"
+      ]
+    },
+    {
+      "name": "AMD MI300X",
+      "slug": "amd-mi300x",
+      "category": "AI Training",
+      "description": "AMD Instinct MI300X for massive AI workloads with industry-leading memory capacity.",
+      "specs": {
+        "cpu": "128 cores",
+        "gpu": "AMD Instinct MI300X",
+        "ram": "512GB DDR5",
+        "vram": "192GB HBM3",
+        "network": "200Gbps",
+        "storage": "2TB NVMe Gen4"
+      },
+      "pricing": {
+        "hourly": 3,
+        "monthly": 1800
+      },
+      "priceHourly": 3,
+      "priceMonthly": 1800,
+      "stock": 8,
+      "featured": false,
+      "images": [
+        "/images/mi300x.jpg"
+      ]
+    },
+    {
+      "name": "NVIDIA A6000",
+      "slug": "nvidia-a6000",
+      "category": "Professional Viz",
+      "description": "Professional visualization GPU for design and rendering workloads.",
+      "specs": {
+        "cpu": "48 cores",
+        "gpu": "NVIDIA RTX A6000",
+        "ram": "192GB DDR4",
+        "vram": "48GB GDDR6",
+        "network": "25Gbps",
+        "storage": "1TB NVMe"
+      },
+      "pricing": {
+        "hourly": 1,
+        "monthly": 600
+      },
+      "priceHourly": 1,
+      "priceMonthly": 600,
+      "stock": 20,
+      "featured": false,
+      "images": [
+        "/images/a6000.jpg"
+      ]
+    },
+    {
+      "name": "NVIDIA A100 40GB",
+      "slug": "nvidia-a100-40gb",
+      "category": "AI Training",
+      "description": "Proven AI workhorse with Multi-Instance GPU technology.",
+      "specs": {
+        "cpu": "32 cores",
+        "gpu": "NVIDIA A100",
+        "ram": "128GB DDR4",
+        "vram": "40GB HBM2",
+        "network": "50Gbps",
+        "storage": "500GB NVMe"
+      },
+      "pricing": {
+        "hourly": 1.5,
+        "monthly": 900
+      },
+      "priceHourly": 1.5,
+      "priceMonthly": 900,
+      "stock": 25,
+      "featured": false,
+      "images": []
+    },
+    {
+      "name": "NVIDIA V100 32GB",
+      "slug": "nvidia-v100-32gb",
+      "category": "AI Training",
+      "description": "Previous generation data center GPU.",
+      "specs": {
+        "cpu": "32 cores",
+        "gpu": "NVIDIA V100",
+        "ram": "128GB DDR4",
+        "vram": "32GB HBM2",
+        "network": "25Gbps",
+        "storage": "500GB NVMe"
+      },
+      "pricing": {
+        "hourly": 1.2,
+        "monthly": 720
+      },
+      "priceHourly": 1.2,
+      "priceMonthly": 720,
+      "stock": 15,
+      "featured": false,
+      "images": []
+    },
+    {
+      "name": "NVIDIA T4",
+      "slug": "nvidia-t4",
+      "category": "Inference",
+      "description": "Cost-effective inference GPU.",
+      "specs": {
+        "cpu": "16 cores",
+        "gpu": "NVIDIA T4",
+        "ram": "64GB DDR4",
+        "vram": "16GB GDDR6",
+        "network": "10Gbps",
+        "storage": "256GB NVMe"
+      },
+      "pricing": {
+        "hourly": 0.45,
+        "monthly": 270
+      },
+      "priceHourly": 0.45,
+      "priceMonthly": 270,
+      "stock": 30,
+      "featured": false,
+      "images": []
+    },
+    {
+      "name": "NVIDIA L4",
+      "slug": "nvidia-l4",
+      "category": "Inference",
+      "description": "Latest generation inference GPU.",
+      "specs": {
+        "cpu": "24 cores",
+        "gpu": "NVIDIA L4",
+        "ram": "96GB DDR5",
+        "vram": "24GB GDDR6",
+        "network": "25Gbps",
+        "storage": "500GB NVMe"
+      },
+      "pricing": {
+        "hourly": 0.7,
+        "monthly": 420
+      },
+      "priceHourly": 0.7,
+      "priceMonthly": 420,
+      "stock": 20,
+      "featured": false,
+      "images": []
+    },
+    {
+      "name": "NVIDIA RTX A5000",
+      "slug": "nvidia-rtx-a5000",
+      "category": "Professional Viz",
+      "description": "Professional workstation GPU.",
+      "specs": {
+        "cpu": "32 cores",
+        "gpu": "NVIDIA RTX A5000",
+        "ram": "128GB DDR4",
+        "vram": "24GB GDDR6",
+        "network": "10Gbps",
+        "storage": "1TB NVMe"
+      },
+      "pricing": {
+        "hourly": 0.65,
+        "monthly": 390
+      },
+      "priceHourly": 0.65,
+      "priceMonthly": 390,
+      "stock": 18,
+      "featured": false,
+      "images": []
+    },
+    {
+      "name": "NVIDIA RTX A4000",
+      "slug": "nvidia-rtx-a4000",
+      "category": "Professional Viz",
+      "description": "Mid-range professional GPU.",
+      "specs": {
+        "cpu": "24 cores",
+        "gpu": "NVIDIA RTX A4000",
+        "ram": "64GB DDR4",
+        "vram": "16GB GDDR6",
+        "network": "10Gbps",
+        "storage": "500GB NVMe"
+      },
+      "pricing": {
+        "hourly": 0.45,
+        "monthly": 270
+      },
+      "priceHourly": 0.45,
+      "priceMonthly": 270,
+      "stock": 22,
+      "featured": false,
+      "images": []
+    },
+    {
+      "name": "AMD MI250X",
+      "slug": "amd-mi250x",
+      "category": "AI Training",
+      "description": "AMD Instinct for large-scale AI training.",
+      "specs": {
+        "cpu": "64 cores",
+        "gpu": "AMD Instinct MI250X",
+        "ram": "256GB DDR4",
+        "vram": "128GB HBM2e",
+        "network": "100Gbps",
+        "storage": "1TB NVMe"
+      },
+      "pricing": {
+        "hourly": 2.5,
+        "monthly": 1500
+      },
+      "priceHourly": 2.5,
+      "priceMonthly": 1500,
+      "stock": 10,
+      "featured": false,
+      "images": []
+    },
+    {
+      "name": "Intel Gaudi 2",
+      "slug": "intel-gaudi-2",
+      "category": "AI Training",
+      "description": "Intel Gaudi 2 for LLM training.",
+      "specs": {
+        "cpu": "48 cores",
+        "gpu": "Intel Gaudi 2",
+        "ram": "256GB DDR5",
+        "vram": "96GB HBM",
+        "network": "200Gbps",
+        "storage": "2TB NVMe"
+      },
+      "pricing": {
+        "hourly": 3,
+        "monthly": 1800
+      },
+      "priceHourly": 3,
+      "priceMonthly": 1800,
+      "stock": 8,
+      "featured": false,
+      "images": []
+    }
+  ],
+  "users": [
+    {
+      "email": "admin@dencone.com",
+      "name": "Admin",
+      "role": "ADMIN",
+      "balance": 1000
+    },
+    {
+      "email": "test@example.com",
+      "name": "Test User",
+      "role": "USER",
+      "balance": 0
+    },
+    {
+      "email": "test2@example.com",
+      "name": "Test User",
+      "role": "USER",
+      "balance": 0
+    },
+    {
+      "email": "user123@test.com",
+      "name": "New User",
+      "role": "USER",
+      "balance": 0
+    },
+    {
+      "email": "newuser@test.com",
+      "name": "New User",
+      "role": "USER",
+      "balance": 0
+    },
+    {
+      "email": "liurui@cloudta.com.cn",
+      "name": "liu",
+      "role": "USER",
+      "balance": 0
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String    @id @default(cuid())
+  email           String    @unique
+  password        String
+  name            String?
+  avatar          String?
+  role            Role      @default(USER)
+  balance         Float     @default(0)
+  emailVerified   Boolean   @default(false)
+  verificationCode String?
+  verificationExpiry DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  orders          Order[]
+  instances       Instance[]
+  transactions    Transaction[]
+
+  @@map("users")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model Product {
+  id          String    @id @default(cuid())
+  name        String
+  slug        String    @unique
+  category    String
+  description String?   @db.Text
+  descriptionJa String? @db.Text
+  specs       Json?
+  pricing     Json
+  priceHourly  Float
+  priceMonthly Float
+  stock       Int       @default(0)
+  status      ProductStatus @default(ACTIVE)
+  featured    Boolean   @default(false)
+  images      String[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  orders      Order[]
+  instances  Instance[]
+
+  @@map("products")
+}
+
+enum ProductStatus {
+  ACTIVE
+  MAINTENANCE
+  OFFLINE
+}
+
+model Order {
+  id          String      @id @default(cuid())
+  userId      String
+  productId   String
+  type        OrderType
+  amount      Float
+  status      OrderStatus @default(PENDING)
+  instanceId  String?
+  metadata    Json?
+  createdAt   DateTime    @default(now())
+  paidAt      DateTime?
+
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product     Product    @relation(fields: [productId], references: [id])
+  instance    Instance?
+
+  @@map("orders")
+}
+
+enum OrderType {
+  HOURLY
+  MONTHLY
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  PROCESSING
+  ACTIVE
+  COMPLETED
+  CANCELLED
+  REFUNDED
+}
+
+model Instance {
+  id          String          @id @default(cuid())
+  orderId     String          @unique
+  userId      String
+  productId   String
+  status      InstanceStatus  @default(PENDING)
+  ip          String?
+  port        Int?
+  sshKey      String?
+  password    String?
+  startedAt   DateTime?
+  expiresAt   DateTime?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  order       Order        @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product     Product      @relation(fields: [productId], references: [id])
+
+  @@map("instances")
+}
+
+enum InstanceStatus {
+  PENDING
+  CREATING
+  RUNNING
+  STOPPED
+  TERMINATED
+}
+
+model Transaction {
+  id          String    @id @default(cuid())
+  userId      String
+  type        TransactionType
+  amount      Float
+  balance    Float
+  description String?
+  createdAt   DateTime  @default(now())
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("transactions")
+}
+
+enum TransactionType {
+  DEPOSIT
+  PAYMENT
+  REFUND
+  BONUS
+}
