@@ -1,98 +1,126 @@
 #!/bin/bash
 
-# DENCONE 一键部署脚本
+# =============================================
+# SUNCITY GPU Cloud 一键部署脚本
+# Ubuntu 24.04 专用
+# =============================================
 
 set -e
 
-echo "=== DENCONE 部署开始 ==="
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
 
-# 1. 检查 Node.js
-if ! command -v node &> /dev/null; then
-    echo "安装 Node.js..."
+echo -e "${GREEN}=== SUNCITY 一键部署开始 ===${NC}"
+
+# =============================================
+# 1. 安装基础软件
+# =============================================
+echo -e "${YELLOW}[1/5] 安装基础软件...${NC}"
+
+apt update
+apt install -y curl wget git vim
+
+# =============================================
+# 2. 安装 Node.js 20
+# =============================================
+echo -e "${YELLOW}[2/5] 安装 Node.js 20...${NC}"
+
+if ! command -v node &> /dev/null || [[ $(node -v | cut -d. -f1 | tr -d 'v') -lt 20 ]]; then
     curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
     apt install -y nodejs
 fi
 
-# 2. 安装 PostgreSQL
+node -v
+npm -v
+
+# =============================================
+# 3. 安装 PostgreSQL
+# =============================================
+echo -e "${YELLOW}[3/5] 安装 PostgreSQL...${NC}"
+
 if ! command -v psql &> /dev/null; then
-    echo "安装 PostgreSQL..."
-    apt update
     apt install -y postgresql postgresql-contrib
     systemctl start postgresql
     systemctl enable postgresql
 fi
 
-# 3. 配置数据库
-echo "配置数据库..."
-sudo -u postgres psql -c "CREATE DATABASE dencone;" 2>/dev/null || true
-sudo -u postgres psql -c "CREATE USER dencone WITH PASSWORD 'dencone123';" 2>/dev/null || true
-sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE dencone TO dencone;" 2>/dev/null || true
-sudo -u postgres psql -c "ALTER DATABASE dencone OWNER TO dencone;" 2>/dev/null || true
+# 创建数据库和用户
+sudo -u postgres psql -c "CREATE DATABASE suncity;" 2>/dev/null || true
+sudo -u postgres psql -c "CREATE USER suncity WITH PASSWORD 'suncity123';" 2>/dev/null || true
+sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE suncity TO suncity;" 2>/dev/null || true
+sudo -u postgres psql -c "ALTER DATABASE suncity OWNER TO suncity;" 2>/dev/null || true
 
+echo -e "${GREEN}数据库: suncity / suncity123${NC}"
+
+# =============================================
 # 4. 安装 PM2
-if ! command -v pm2 &> /dev/null; then
-    echo "安装 PM2..."
-    npm install -g pm2
-fi
+# =============================================
+echo -e "${YELLOW}[4/5] 安装 PM2...${NC}"
 
-# 5. 克隆代码
-echo "获取代码..."
-if [ -d "/opt/dencone-gpu" ]; then
-    cd /opt/dencone-gpu
+npm install -g pm2
+pm2 install pm2-logrotate
+
+# =============================================
+# 5. 部署代码
+# =============================================
+echo -e "${YELLOW}[5/5] 部署代码...${NC}"
+
+# 克隆代码
+mkdir -p /opt
+cd /opt
+
+if [ -d "/opt/suncity" ]; then
+    cd /opt/suncity
     git pull
 else
-    cd /opt
-    git clone https://github.com/Minerlgx/dencone-gpu.git
-    cd dencone-gpu
+    git clone https://github.com/Minerlgx/suncity-gpu.git /opt/suncity
+    cd /opt/suncity
 fi
 
-# 6. 配置后端
-echo "配置后端..."
-cd /opt/dencone-gpu/backend
-cp .env.example .env 2>/dev/null || true
+chmod -R 755 /opt/suncity
 
-# 创建 .env 文件
+# 后端
+cd /opt/suncity/backend
 cat > .env << EOF
-DATABASE_URL="postgresql://dencone:dencone123@localhost:5432/dencone"
-JWT_SECRET="$(openssl rand -base64 32)"
+DATABASE_URL="postgresql://suncity:suncity123@localhost:5432/suncity"
+JWT_SECRET=$(openssl rand -base64 32)
 NODE_ENV=production
 PORT=3001
-FRONTEND_URL=https://www.dencone.com
+FRONTEND_URL=http://localhost:3000
 EOF
 
-# 安装依赖
-echo "安装后端依赖..."
-npm install
+npm install --unsafe-perm=true --allow-root 2>/dev/null || npm install
 npx prisma generate
 npx prisma db push
 
-# 导入产品数据
-echo "导入产品数据..."
-npx tsx prisma/seed.ts 2>/dev/null || true
+# 启动后端
+pm2 delete suncity-backend 2>/dev/null || true
+pm2 start npm --name suncity-backend -- run dev
 
-# 7. 启动后端
-echo "启动后端..."
-pm2 delete dencone-backend 2>/dev/null || true
-pm2 start npm --name dencone-backend -- run dev
-
-# 8. 配置前端
-echo "配置前端..."
-cd /opt/dencone-gpu/frontend
-cp .env.production .env.local 2>/dev/null || true
+# 前端
+cd /opt/suncity/frontend
 cat > .env.local << EOF
-NEXT_PUBLIC_API_URL=https://www.dencone.com/api
+NEXT_PUBLIC_API_URL=http://localhost:3001/api
 EOF
 
-npm install
+npm install --unsafe-perm=true --allow-root 2>/dev/null || npm install
 npm run build
 
-# 9. 设置 PM2 开机自启
-pm2 startup
+pm2 delete suncity-frontend 2>/dev/null || true
+pm2 start npm --name suncity-frontend -- run start
 pm2 save
 
-echo "=== 部署完成 ==="
+# =============================================
+# 完成
+# =============================================
 echo ""
-echo "后端运行: pm2 status dencone-backend"
-echo "后端日志: pm2 logs dencone-backend"
+echo -e "${GREEN}=== 部署完成 ===${NC}"
 echo ""
-echo "下一步: 用 1Panel 配置 Nginx 反向代理"
+echo "前端: http://localhost:3000"
+echo "后端: http://localhost:3001"
+echo ""
+echo "管理命令:"
+echo "  pm2 status"
+echo "  pm2 logs"
