@@ -15,7 +15,14 @@ echo "=== SUNCITY 部署开始 ==="
 echo "[1/6] 安装 PostgreSQL..."
 
 apt update
-apt install -y postgresql postgresql-contrib
+
+# 添加 PostgreSQL 官方仓库
+apt install -y curl ca-certificates gnupg
+curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor -o /usr/share/keyrings/postgresql.gpg
+echo "deb [signed-by=/usr/share/keyrings/postgresql.gpg] http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list
+
+apt update
+apt install -y postgresql-16 postgresql-contrib-16
 
 # 启动
 systemctl start postgresql
