@@ -50,8 +50,16 @@ echo "数据库创建完成: suncity / suncity123"
 # =============================================
 echo "[3/6] 安装 Node.js..."
 
+# 清理旧版本
+apt remove -y nodejs npm 2>/dev/null || true
+
+# 安装 Node.js 20
 curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
 apt install -y nodejs
+
+# 验证版本
+node -v
+npm -v
 
 # 安装 PM2
 npm install -g pm2
