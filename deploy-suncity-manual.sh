@@ -53,13 +53,17 @@ echo "[3/6] 安装 Node.js..."
 # 清理旧版本
 apt remove -y nodejs npm 2>/dev/null || true
 
-# 安装 Node.js 20
-curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+# 添加 NodeSource 仓库
+mkdir -p /etc/apt/keyrings
+curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list
+
+apt update
 apt install -y nodejs
 
-# 验证版本
-node -v
-npm -v
+# 安装 PM2
+npm install -g pm2
+pm2 install pm2-logrotate
 
 # 安装 PM2
 npm install -g pm2
