@@ -69,11 +69,14 @@ pm2 install pm2-logrotate
 npm install -g pm2
 pm2 install pm2-logrotate
 
-# =============================================
-# 4. 克隆代码
-# =============================================
+# 克隆代码
 echo "[4/6] 克隆代码..."
 
+# 创建目录
+mkdir -p /opt
+cd /opt
+
+# 克隆（如果已存在则拉取）
 if [ -d "/opt/suncity" ]; then
     cd /opt/suncity
     git pull
@@ -81,6 +84,9 @@ else
     git clone https://github.com/Minerlgx/suncity-gpu.git /opt/suncity
     cd /opt/suncity
 fi
+
+# 修复权限
+chmod -R 755 /opt/suncity
 
 # =============================================
 # 5. 配置并启动后端
@@ -99,7 +105,7 @@ FRONTEND_URL=http://localhost:3000
 EOF
 
 # 安装依赖
-npm install
+npm install --unsafe-perm=true --allow-root
 npx prisma generate
 
 # 创建数据库表
@@ -122,7 +128,7 @@ cat > .env.local << EOF
 NEXT_PUBLIC_API_URL=http://localhost:3001/api
 EOF
 
-npm install
+npm install --unsafe-perm=true --allow-root
 npm run build
 
 # 启动前端
