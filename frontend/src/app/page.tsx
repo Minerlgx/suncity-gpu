@@ -180,7 +180,7 @@ export default function Home() {
               <div 
                 className="aspect-[4/3] flex items-end"
                 style={{
-                  backgroundImage: 'url(https://images.unsplash.com/photo-1517330157-47349a967e2c?w=800)',
+                  backgroundImage: 'url(/japan-datacenter.jpg)',
                   backgroundSize: 'cover',
                   backgroundPosition: 'center'
                 }}

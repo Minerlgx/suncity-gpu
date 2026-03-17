@@ -5,7 +5,7 @@ import { Check, Zap, Shield, Globe, Clock, CreditCard } from 'lucide-react'
 
 export default function PricingPage() {
   return (
-    <div className="min-h-screen bg-gray-50 pt-16">
+    <div className="min-h-screen bg-gray-50 pt-24">
       {/* Hero */}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-6 text-center">

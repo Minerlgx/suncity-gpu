@@ -7,17 +7,8 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="grid md:grid-cols-5 gap-8">
           <div className="md:col-span-2">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 relative">
-                <Image 
-                  src="/company-logo.png" 
-                  alt="Suncity GPU" 
-                  width={40} 
-                  height={40}
-                  className="object-contain"
-                />
-              </div>
-              <span className="font-bold text-xl text-gray-900">SUNCITY GPU</span>
+            <Link href="/" className="text-2xl font-bold text-white tracking-wider mb-4 block">
+              SUNCITY
             </Link>
             <p className="text-gray-600 mb-6 max-w-sm">
               Enterprise-grade bare metal GPU servers in Asia-Pacific. 
