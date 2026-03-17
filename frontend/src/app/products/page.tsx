@@ -90,7 +90,7 @@ function ProductsContent() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white border-b border-gray-200" style={{ marginTop: '64px' }}>
-        <div className="max-w-7xl mx-auto px-6 py-8">
+        <div className="max-w-7xl mx-auto px-6 py-4">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Products</h1>
           <p className="text-gray-600 text-lg">Deploy powerful GPU instances in minutes. From RTX 4090 to H100, we have the hardware you need for AI, ML, and rendering workloads.</p>
         </div>
