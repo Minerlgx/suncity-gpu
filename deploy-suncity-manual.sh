@@ -61,10 +61,14 @@ echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.co
 apt update
 apt install -y nodejs
 
+npm config get prefix
+export PATH="$(npm config get prefix)/bin:$PATH"
 # 安装 PM2
 npm install -g pm2
 pm2 install pm2-logrotate
 
+npm config get prefix
+export PATH="$(npm config get prefix)/bin:$PATH"
 # 安装 PM2
 npm install -g pm2
 pm2 install pm2-logrotate
