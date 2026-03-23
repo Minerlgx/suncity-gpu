@@ -291,7 +291,7 @@ export default function ProductDetailPage() {
                 {/* Price */}
                 <div className="text-center mb-6 pb-6 border-b border-gray-200">
                   <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6 mb-4">
-                    <span className="text-5xl font-black" style={{ color: '#3B82F6' }}>${price.toFixed(2)}</span>
+                    <span className="text-5xl font-black" style={{ color: '#3B82F6' }}>${(price || 0).toFixed(2)}</span>
                     <span className="text-gray-500 text-lg ml-1">/{billingCycle === 'MONTHLY' ? 'mo' : 'hr'}</span>
                   </div>
                   {billingCycle === 'MONTHLY' && product && (
