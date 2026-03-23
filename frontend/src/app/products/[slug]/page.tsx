@@ -70,7 +70,7 @@ export default function ProductDetailPage() {
   const fetchProduct = async () => {
     try {
       const { data } = await api.get(`/products/${slug}`)
-      setProduct(data)
+      setProduct(data.product)
     } catch (err) {
       setError('Failed to load product')
     } finally {
