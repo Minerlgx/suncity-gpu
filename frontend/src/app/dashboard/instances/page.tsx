@@ -27,7 +27,7 @@ export default function InstancesPage() {
         <h1 className="text-3xl font-bold text-gray-900 mb-8">My Instances</h1>
         {instances.length === 0 ? (
           <div className="bg-white rounded-xl p-12 text-center">
-            <p className="text-gray-500 mb-4">No instances yet</p>
+            <p className="text-gray-400 mb-4">No instances yet</p>
             <a href="/products" className="inline-block px-6 py-2 bg-blue-600 text-white rounded-lg" style={{backgroundColor:'#3B82F6'}}>Deploy Now</a>
           </div>
         ) : (
@@ -37,7 +37,7 @@ export default function InstancesPage() {
                 <div className="flex justify-between items-start">
                   <div>
                     <div className="font-bold text-gray-900">{inst.product?.name}</div>
-                    <div className="text-sm text-gray-500 mt-1">{inst.ip}:{inst.port}</div>
+                    <div className="text-sm text-gray-400 mt-1">{inst.ip}:{inst.port}</div>
                   </div>
                   <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full capitalize text-sm">{inst.status}</span>
                 </div>

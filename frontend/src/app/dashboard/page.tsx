@@ -80,7 +80,7 @@ export default function DashboardPage() {
               </div>
               <div>
                 <div className="text-2xl font-bold text-gray-900">{instances.length}</div>
-                <div className="text-gray-500 text-sm">Instances</div>
+                <div className="text-gray-400 text-sm">Instances</div>
               </div>
             </div>
           </div>
@@ -91,7 +91,7 @@ export default function DashboardPage() {
               </div>
               <div>
                 <div className="text-2xl font-bold text-gray-900">{orders.length}</div>
-                <div className="text-gray-500 text-sm">Orders</div>
+                <div className="text-gray-400 text-sm">Orders</div>
               </div>
             </div>
           </div>
@@ -102,7 +102,7 @@ export default function DashboardPage() {
               </div>
               <div>
                 <div className="text-2xl font-bold text-gray-900">${user?.balance || 0}</div>
-                <div className="text-gray-500 text-sm">Balance</div>
+                <div className="text-gray-400 text-sm">Balance</div>
               </div>
             </div>
           </div>
@@ -113,7 +113,7 @@ export default function DashboardPage() {
               </div>
               <div>
                 <div className="text-2xl font-bold text-gray-900">{user?.role || 'User'}</div>
-                <div className="text-gray-500 text-sm">Account Type</div>
+                <div className="text-gray-400 text-sm">Account Type</div>
               </div>
             </div>
           </div>
@@ -124,23 +124,23 @@ export default function DashboardPage() {
           <Link href="/products" className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow flex items-center justify-between">
             <div>
               <h3 className="font-bold text-gray-900 mb-1">Browse GPUs</h3>
-              <p className="text-gray-500 text-sm">View available GPU servers</p>
+              <p className="text-gray-400 text-sm">View available GPU servers</p>
             </div>
-            <ChevronRight className="w-5 h-5 text-gray-400" />
+            <ChevronRight className="w-5 h-5 text-gray-300" />
           </Link>
           <Link href="/dashboard/orders" className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow flex items-center justify-between">
             <div>
               <h3 className="font-bold text-gray-900 mb-1">My Orders</h3>
-              <p className="text-gray-500 text-sm">View order history</p>
+              <p className="text-gray-400 text-sm">View order history</p>
             </div>
-            <ChevronRight className="w-5 h-5 text-gray-400" />
+            <ChevronRight className="w-5 h-5 text-gray-300" />
           </Link>
           <Link href="/dashboard/settings" className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow flex items-center justify-between">
             <div>
               <h3 className="font-bold text-gray-900 mb-1">Settings</h3>
-              <p className="text-gray-500 text-sm">Account settings</p>
+              <p className="text-gray-400 text-sm">Account settings</p>
             </div>
-            <ChevronRight className="w-5 h-5 text-gray-400" />
+            <ChevronRight className="w-5 h-5 text-gray-300" />
           </Link>
         </div>
 
@@ -152,7 +152,7 @@ export default function DashboardPage() {
           </div>
           {instances.length === 0 ? (
             <div className="text-center py-8">
-              <p className="text-gray-500 mb-4">No instances yet</p>
+              <p className="text-gray-400 mb-4">No instances yet</p>
               <Link href="/products" className="inline-block px-6 py-2 rounded-lg text-white font-medium" style={{ backgroundColor: '#3B82F6' }}>
                 Deploy Now
               </Link>
@@ -163,7 +163,7 @@ export default function DashboardPage() {
                 <div key={inst.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
                   <div>
                     <div className="font-medium text-gray-900">{inst.product?.name || 'GPU Instance'}</div>
-                    <div className="text-sm text-gray-500">{inst.ip}:{inst.port}</div>
+                    <div className="text-sm text-gray-400">{inst.ip}:{inst.port}</div>
                   </div>
                   <span className="px-3 py-1 bg-green-100 text-green-700 text-sm rounded-full capitalize">{inst.status}</span>
                 </div>

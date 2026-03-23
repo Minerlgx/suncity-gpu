@@ -20,7 +20,7 @@ export default function OrdersPage() {
         <h1 className="text-3xl font-bold text-gray-900 mb-8">My Orders</h1>
         {orders.length === 0 ? (
           <div className="bg-white rounded-xl p-12 text-center">
-            <p className="text-gray-500 mb-4">No orders yet</p>
+            <p className="text-gray-400 mb-4">No orders yet</p>
             <a href="/products" className="inline-block px-6 py-2 bg-blue-600 text-white rounded-lg" style={{backgroundColor:'#3B82F6'}}>Browse Products</a>
           </div>
         ) : (
@@ -30,7 +30,7 @@ export default function OrdersPage() {
                 <div className="flex justify-between items-start">
                   <div>
                     <div className="font-bold text-gray-900">{order.product?.name || 'Order'}</div>
-                    <div className="text-sm text-gray-500">{new Date(order.createdAt).toLocaleDateString()}</div>
+                    <div className="text-sm text-gray-400">{new Date(order.createdAt).toLocaleDateString()}</div>
                   </div>
                   <div className="text-right">
                     <div className="font-bold text-gray-900">${order.amount}</div>

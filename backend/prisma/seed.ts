@@ -76,10 +76,10 @@ const products = [
     specs: {
       gpu: 'NVIDIA H200 141GB SXM',
       vram: '141GB HBM3e',
-      cpu: 'AMD EPYC 7763 64 cores',
-      ram: '512GB DDR5',
+      cpu: 'AMD EPYC 9755 128 cores',
+      ram: '2TB DDR5',
       storage: '2TB NVMe Gen5',
-      network: '10Gbps',
+      network: '400Gbps',
       datacenter: 'Japan (Tokyo)',
     },
     priceHourly: 3.50,

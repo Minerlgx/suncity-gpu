@@ -119,7 +119,7 @@ function ProductDetailContent() {
             </div>
             
             <h1 className="text-3xl font-bold mb-2">Instance Deployed!</h1>
-            <p className="text-text-secondary mb-8">
+            <p className="text-white mb-8">
               Your GPU instance is ready to use
             </p>
 
@@ -132,19 +132,19 @@ function ProductDetailContent() {
               
               <div className="grid grid-cols-2 gap-4 text-sm">
                 <div>
-                  <div className="text-text-muted mb-1">IP Address</div>
+                  <div className="text-white mb-1">IP Address</div>
                   <div className="font-mono text-accent">{createdInstance.ip}</div>
                 </div>
                 <div>
-                  <div className="text-text-muted mb-1">Port</div>
+                  <div className="text-white mb-1">Port</div>
                   <div className="font-mono">{createdInstance.port}</div>
                 </div>
                 <div>
-                  <div className="text-text-muted mb-1">Password</div>
+                  <div className="text-white mb-1">Password</div>
                   <div className="font-mono">{createdInstance.password}</div>
                 </div>
                 <div>
-                  <div className="text-text-muted mb-1">Status</div>
+                  <div className="text-white mb-1">Status</div>
                   <span className="badge badge-success">Running</span>
                 </div>
               </div>
@@ -171,7 +171,7 @@ function ProductDetailContent() {
       {/* Breadcrumb */}
       <div className="bg-surface-card border-b border-surface-border">
         <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center gap-2 text-sm text-text-secondary">
+          <div className="flex items-center gap-2 text-sm text-white">
             <Link href="/products" className="hover:text-accent flex items-center gap-1">
               <ArrowLeft className="w-4 h-4" />
               Products
@@ -187,33 +187,33 @@ function ProductDetailContent() {
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">
             {/* Product Header */}
-            <div className="card">
+            <div className="card bg-gradient-to-br from-surface to-surface-card rounded-3xl shadow-xl border border-surface-border">
               <div className="flex items-start justify-between mb-6">
                 <div>
                   <div className="flex items-center gap-3 mb-2">
-                    <h1 className="text-3xl font-bold">{product.name}</h1>
+                    <h1 className="text-3xl font-bold text-white">{product.name}</h1>
                     {product.featured && (
-                      <span className="badge badge-accent">
+                      <span className="badge bg-gradient-to-r from-yellow-500 to-orange-500 text-white shadow-lg">
                         <Zap className="w-3 h-3 mr-1" />
                         Popular
                       </span>
                     )}
                   </div>
-                  <span className="badge bg-surface-border text-text-secondary">
+                  <span className="badge bg-blue-500/20 text-blue-400 border border-blue-500/30">
                     {product.category}
                   </span>
                 </div>
               </div>
 
-              <p className="text-text-secondary text-lg leading-relaxed">
+              <p className="text-white text-lg leading-relaxed">
                 {product.description}
               </p>
             </div>
 
             {/* Specifications */}
-            <div className="card">
-              <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
-                <Cpu className="w-5 h-5 text-accent" />
+            <div className="card bg-gradient-to-br from-surface to-surface-card rounded-3xl shadow-xl border border-surface-border">
+              <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                <Cpu className="w-5 h-5 text-blue-400" />
                 Specifications
               </h2>
 
@@ -252,9 +252,9 @@ function ProductDetailContent() {
             </div>
 
             {/* Features */}
-            <div className="card">
-              <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
-                <Shield className="w-5 h-5 text-accent" />
+            <div className="card bg-gradient-to-br from-surface to-surface-card rounded-3xl shadow-xl border border-surface-border">
+              <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                <Shield className="w-5 h-5 text-green-400" />
                 Included Features
               </h2>
 
@@ -269,9 +269,9 @@ function ProductDetailContent() {
                   'Real-time Monitoring',
                   'IPv4 Address',
                 ].map((feature, i) => (
-                  <div key={i} className="flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-success flex-shrink-0" />
-                    <span className="text-text-secondary">{feature}</span>
+                  <div key={i} className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/10">
+                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                    <span className="text-white font-medium">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -280,44 +280,45 @@ function ProductDetailContent() {
 
           {/* Purchase Sidebar */}
           <div className="lg:col-span-1">
-            <div className="card sticky top-24">
-              <h2 className="text-xl font-bold mb-6">Deploy Instance</h2>
+            <div className="card bg-gradient-to-br from-surface to-surface-card rounded-3xl shadow-2xl border border-surface-border sticky top-24 overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"></div>
+              <h2 className="text-xl font-bold text-white mb-6 pt-2">Deploy Instance</h2>
 
               {/* Billing Cycle */}
               <div className="flex gap-2 mb-6">
                 <button
                   onClick={() => setBillingCycle('HOURLY')}
-                  className={`flex-1 py-3 px-4 rounded-lg border transition-all ${
+                  className={`flex-1 py-4 px-4 rounded-xl border-2 transition-all ${
                     billingCycle === 'HOURLY'
-                      ? 'border-accent bg-accent/10 text-accent'
-                      : 'border-surface-border text-text-secondary hover:border-accent/50'
+                      ? 'border-blue-500 bg-blue-500/20 text-blue-400'
+                      : 'border-surface-border text-gray-400 hover:border-blue-500/50'
                   }`}
                 >
-                  <div className="font-medium">Hourly</div>
-                  <div className="text-sm">Pay as you go</div>
+                  <div className="font-bold text-black">Hourly</div>
+                  <div className="text-sm text-gray-600">Pay as you go</div>
                 </button>
                 <button
                   onClick={() => setBillingCycle('MONTHLY')}
-                  className={`flex-1 py-3 px-4 rounded-lg border transition-all ${
+                  className={`flex-1 py-4 px-4 rounded-xl border-2 transition-all ${
                     billingCycle === 'MONTHLY'
-                      ? 'border-accent bg-accent/10 text-accent'
-                      : 'border-surface-border text-text-secondary hover:border-accent/50'
+                      ? 'border-blue-500 bg-blue-500/20 text-blue-400'
+                      : 'border-surface-border text-gray-400 hover:border-blue-500/50'
                   }`}
                 >
-                  <div className="font-medium">Monthly</div>
-                  <div className="text-sm text-success">Save 20%</div>
+                  <div className="font-bold text-black">Monthly</div>
+                  <div className="text-sm text-green-600 font-medium">Save 20%</div>
                 </button>
               </div>
 
               {/* Price */}
               <div className="text-center mb-6 pb-6 border-b border-surface-border">
-                <div className="flex items-baseline justify-center gap-1">
-                  <span className="text-4xl font-bold text-accent">${price.toFixed(2)}</span>
-                  <span className="text-text-secondary">/{billingCycle === 'MONTHLY' ? 'month' : 'hour'}</span>
+                <div className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-2xl p-6 mb-4">
+                  <span className="text-5xl font-black" style={{ color: '#3B82F6' }}>${price.toFixed(2)}</span>
+                  <span className="text-gray-400 text-lg">/{billingCycle === 'MONTHLY' ? 'month' : 'hour'}</span>
                 </div>
                 {billingCycle === 'MONTHLY' && (
-                  <div className="text-text-muted text-sm mt-1">
-                    Equivalent to ${(product.priceHourly * 730).toFixed(2)}/month
+                  <div className="text-gray-500 text-sm mt-2">
+                    Equivalent to ${(product.priceHourly * 730).toFixed(2)}/mo
                   </div>
                 )}
               </div>
@@ -334,16 +335,16 @@ function ProductDetailContent() {
               <button
                 onClick={handlePurchase}
                 disabled={purchasing || product.stock === 0}
-                className="btn-glow w-full py-4 text-lg flex items-center justify-center gap-2"
+                className="w-full py-4 text-lg font-bold rounded-2xl bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:from-blue-600 hover:to-blue-700 shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {purchasing ? (
                   <>
-                    <div className="animate-spin rounded-full h-5 w-5 border-2 border-primary border-t-transparent"></div>
+                    <div className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent"></div>
                     Deploying...
                   </>
                 ) : (
                   <>
-                    <ShoppingCart className="w-5 h-5" />
+                    <Zap className="w-5 h-5" />
                     Deploy Now
                   </>
                 )}
@@ -365,7 +366,7 @@ function ProductDetailContent() {
               </div>
 
               {/* Info */}
-              <div className="mt-6 pt-6 border-t border-surface-border text-xs text-text-muted space-y-2">
+              <div className="mt-6 pt-6 border-t border-surface-border text-xs text-white space-y-2">
                 <div className="flex items-center gap-2">
                   <Clock className="w-4 h-4" />
                   <span>Instant deployment in seconds</span>
@@ -389,13 +390,13 @@ function ProductDetailContent() {
 
 function SpecItem({ icon: Icon, label, value }: { icon: any; label: string; value?: string }) {
   return (
-    <div className="flex items-center gap-3 p-3 bg-surface rounded-lg">
-      <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
-        <Icon className="w-5 h-5 text-accent" />
+    <div className="flex items-center gap-4 p-4 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-colors">
+      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center flex-shrink-0">
+        <Icon className="w-6 h-6 text-blue-400" />
       </div>
       <div>
-        <div className="text-text-muted text-xs">{label}</div>
-        <div className="font-medium">{value || 'N/A'}</div>
+        <div className="text-gray-400 text-xs uppercase tracking-wider">{label}</div>
+        <div className="font-bold text-white text-lg">{value || 'N/A'}</div>
       </div>
     </div>
   )

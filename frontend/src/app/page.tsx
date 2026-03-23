@@ -120,7 +120,7 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {/* Malaysia */}
-            <div className="group relative overflow-hidden rounded-2xl cursor-pointer">
+            <Link href="/products?datacenter=Malaysia" className="group relative overflow-hidden rounded-2xl cursor-pointer hover:opacity-90 transition-opacity">
               <div 
                 className="aspect-[4/3] flex items-end"
                 style={{
@@ -144,11 +144,14 @@ export default function Home() {
                   <span className="text-gray-600">Latency</span>
                   <span className="font-medium text-gray-900">&lt;5ms (SEA)</span>
                 </div>
+                <div className="mt-3 pt-3 border-t border-gray-200">
+                  <span className="text-sm font-medium" style={{ color: '#3B82F6' }}>View Products →</span>
+                </div>
               </div>
-            </div>
+            </Link>
 
             {/* Indonesia */}
-            <div className="group relative overflow-hidden rounded-2xl">
+            <Link href="/products?datacenter=Indonesia" className="group relative overflow-hidden rounded-2xl cursor-pointer hover:opacity-90 transition-opacity">
               <div 
                 className="aspect-[4/3] flex items-end"
                 style={{
@@ -172,11 +175,14 @@ export default function Home() {
                   <span className="text-gray-600">Latency</span>
                   <span className="font-medium text-gray-900">&lt;3ms (Jakarta)</span>
                 </div>
+                <div className="mt-3 pt-3 border-t border-gray-200">
+                  <span className="text-sm font-medium" style={{ color: '#3B82F6' }}>View Products →</span>
+                </div>
               </div>
-            </div>
+            </Link>
 
             {/* Japan */}
-            <div className="group relative overflow-hidden rounded-2xl">
+            <Link href="/products?datacenter=Japan" className="group relative overflow-hidden rounded-2xl cursor-pointer hover:opacity-90 transition-opacity">
               <div 
                 className="aspect-[4/3] flex items-end"
                 style={{
@@ -200,8 +206,11 @@ export default function Home() {
                   <span className="text-gray-600">Latency</span>
                   <span className="font-medium text-gray-900">&lt;2ms (Tokyo)</span>
                 </div>
+                <div className="mt-3 pt-3 border-t border-gray-200">
+                  <span className="text-sm font-medium" style={{ color: '#3B82F6' }}>View Products →</span>
+                </div>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </section>
