@@ -165,7 +165,7 @@ export default function ProductDetailPage() {
     )
   }
 
-  const price = billingCycle === 'MONTHLY' ? product.priceMonthly : product.priceHourly
+  const price = product ? (billingCycle === 'MONTHLY' ? product.priceMonthly : product.priceHourly) : 0
 
   return (
     <div className="min-h-screen bg-gray-100">
