@@ -68,10 +68,14 @@ export default function ProductDetailPage() {
   }, [slug])
 
   const fetchProduct = async () => {
+    console.log('Fetching product:', slug)
+    console.log('API URL:', process.env.NEXT_PUBLIC_API_URL)
     try {
       const { data } = await api.get(`/products/${slug}`)
+      console.log('API response:', data)
       setProduct(data.product)
     } catch (err) {
+      console.error('API error:', err)
       setError('Failed to load product')
     } finally {
       setLoading(false)
