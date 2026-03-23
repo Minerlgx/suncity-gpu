@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, Suspense } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { useParams } from 'next/navigation'
 import Link from 'next/link'
 import { 
   ArrowLeft, ChevronRight, Cpu, Activity, Server, 
@@ -53,8 +53,8 @@ function SpecItem({ icon: Icon, label, value }: { icon: any; label: string; valu
 }
 
 export default function ProductDetailPage() {
-  const searchParams = useSearchParams()
-  const slug = searchParams.get('slug') || ''
+  const params = useParams()
+  const slug = params.slug as string
   
   const [product, setProduct] = useState<Product | null>(null)
   const [loading, setLoading] = useState(true)
